@@ -1,0 +1,22 @@
+pipeline { 
+    agent any 
+    stages {
+        stage('welcome') { 
+            steps { 
+                echo 'This is stage-1 welcomes you'
+            }
+        }
+        stage('mvn'){
+            steps {
+                dir('my-app') {
+            		sh 'mvn clean install'
+        		}
+            }
+        }
+        stage('Done') {
+            steps {
+                echo 'Done!!!!'
+            }
+        }
+    }
+}
